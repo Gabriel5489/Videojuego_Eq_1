@@ -1,0 +1,618 @@
+fileFormatVersion: 2
+guid: 9c6314050d870a4409074e27c5e79132
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1970917987607217371
+    second: bomb_ground_0
+  - first:
+      213: -2147479545660935310
+    second: bomb_ground_1
+  - first:
+      213: 8867006256584949276
+    second: bomb_ground_2
+  - first:
+      213: -6532438844038777071
+    second: bomb_ground_3
+  - first:
+      213: -1766874247211070152
+    second: bomb_ground_4
+  - first:
+      213: -465792772966836324
+    second: bomb_ground_5
+  - first:
+      213: -150081366284170116
+    second: bomb_ground_6
+  - first:
+      213: 5481596536710536952
+    second: bomb_ground_7
+  - first:
+      213: -1962722946282757812
+    second: bomb_ground_8
+  - first:
+      213: -8587733755524489350
+    second: bomb_ground_9
+  - first:
+      213: -5966387014556906180
+    second: bomb_ground_10
+  - first:
+      213: 3011724356143749800
+    second: bomb_ground_11
+  - first:
+      213: 5387999501862461070
+    second: bomb_ground_12
+  - first:
+      213: -1279026687001956454
+    second: bomb_ground_13
+  - first:
+      213: 790667139773958122
+    second: bomb_ground_14
+  - first:
+      213: -1911593469888900092
+    second: bomb_ground_15
+  - first:
+      213: -389237254343133534
+    second: bomb_ground_16
+  - first:
+      213: 7397954979237195470
+    second: bomb_ground_17
+  - first:
+      213: -9103634078841365930
+    second: world_bomb_ground_0
+  - first:
+      213: 2527308605735213439
+    second: world_bomb_ground_1
+  - first:
+      213: 5872572092973803202
+    second: world_bomb_ground_2
+  - first:
+      213: 7153699866333836474
+    second: world_bomb_ground_3
+  - first:
+      213: 1831180124971404335
+    second: world_bomb_ground_4
+  - first:
+      213: 1037136517289203374
+    second: world_bomb_ground_5
+  - first:
+      213: 1781300532513114658
+    second: world_bomb_ground_6
+  - first:
+      213: 7215536660669414816
+    second: world_bomb_ground_7
+  - first:
+      213: 8580937637062870305
+    second: world_bomb_ground_8
+  - first:
+      213: -3366888650256728686
+    second: world_bomb_ground_9
+  - first:
+      213: -6374607655368111347
+    second: world_bomb_ground_10
+  - first:
+      213: 5889905773861597554
+    second: world_bomb_ground_11
+  - first:
+      213: 5933627800491327289
+    second: world_bomb_ground_12
+  - first:
+      213: -4491441817442563737
+    second: world_bomb_ground_13
+  - first:
+      213: -6954092690567311019
+    second: world_bomb_ground_14
+  - first:
+      213: 2770248205628482001
+    second: world_bomb_ground_15
+  - first:
+      213: -4753634110688864157
+    second: world_bomb_ground_16
+  - first:
+      213: -5995246477347165308
+    second: world_bomb_ground_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 140
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: world_bomb_ground_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 133
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a1585d90569a180800000000000000
+      internalID: -9103634078841365930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_1
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 133
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7992a269cdc21320800000000000000
+      internalID: 2527308605735213439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_2
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 133
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c6639f44319f7150800000000000000
+      internalID: 5872572092973803202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_3
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 133
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab47692602c074360800000000000000
+      internalID: 7153699866333836474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_4
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 133
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c0da42f98a96910800000000000000
+      internalID: 1831180124971404335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_5
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 133
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea6db90ea26a46e00800000000000000
+      internalID: 1037136517289203374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_6
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 133
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22a88a6856378b810800000000000000
+      internalID: 1781300532513114658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_7
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 133
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad32030d5cb22460800000000000000
+      internalID: 7215536660669414816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_8
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 133
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12589e0315d951770800000000000000
+      internalID: 8580937637062870305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_9
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 133
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29d37237c986641d0800000000000000
+      internalID: -3366888650256728686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0b4c4f8c18d887a0800000000000000
+      internalID: -6374607655368111347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_11
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 2
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 271fa8368162db150800000000000000
+      internalID: 5889905773861597554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_12
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 2
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93ffaadfb0b785250800000000000000
+      internalID: 5933627800491327289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_13
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 2
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7694006b6713ba1c0800000000000000
+      internalID: -4491441817442563737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_14
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 2
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5515893da891e7f90800000000000000
+      internalID: -6954092690567311019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_15
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 2
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d1262cc016e17620800000000000000
+      internalID: 2770248205628482001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_16
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 2
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 368d53056f2b70eb0800000000000000
+      internalID: -4753634110688864157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: world_bomb_ground_17
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 2
+        width: 99
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48b6fc0d71b9ccca0800000000000000
+      internalID: -5995246477347165308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
