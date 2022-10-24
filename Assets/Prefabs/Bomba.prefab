@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6398741294270320396}
   - component: {fileID: 396705578032663491}
   - component: {fileID: 1535054608346984546}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -294352489
-  m_SortingLayer: 1
-  m_SortingOrder: 4
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -9103634078841365930, guid: 9c6314050d870a4409074e27c5e79132, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,7 +106,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &396705578032663491
 CircleCollider2D:
   m_ObjectHideFlags: 0

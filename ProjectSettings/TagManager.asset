@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Explosion
+  - Enemigo
   layers:
   - Default
   - TransparentFX
@@ -11,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Stage
+  - Bomb
   - 
   - 
   - 
@@ -41,8 +43,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Indestructibles
+    uniqueID: 3949789421
+    locked: 0
   - name: Bomba
     uniqueID: 4000614807
+    locked: 0
+  - name: Items
+    uniqueID: 2793764209
+    locked: 0
+  - name: Destructibles
+    uniqueID: 2092637179
     locked: 0
   - name: Player
     uniqueID: 308330059
