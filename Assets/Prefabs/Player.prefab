@@ -100,8 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab967baf1a43bf4c837634c4361eb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rgbd2d: {fileID: 0}
   velocidad: 5
+  txtVidas: {fileID: 0}
+  txtPuntaje: {fileID: 0}
+  enemigosDerrotados: 0
+  portal: {fileID: 6043359158019111110, guid: a45ed8604a5071d4290d855cc9eeb07c, type: 3}
   Up: 119
   Down: 115
   Left: 97
@@ -118,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e32d33f98acc5c49be48fdc31fdf71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombaPrefab: {fileID: 2138150486308632644, guid: 4800c0b4ab0e73d43819c9b812cb73fb, type: 3}
-  bomba: 32
-  timeExplosion: 3
+  bombaPrefab: {fileID: 8028626088863716230, guid: 4800c0b4ab0e73d43819c9b812cb73fb, type: 3}
+  bombaKey: 32
+  timeExplosion: 2.5
   cantidadBombas: 1
   bombasRes: 0
   explosionPrefab: {fileID: -1336976502116971958, guid: 568d70a73d0e2424185107b010b58c17, type: 3}

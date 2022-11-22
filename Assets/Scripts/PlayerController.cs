@@ -1,17 +1,28 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
+
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rgbd2d;
-    private Vector2 direccion = Vector2.down;
-    public float velocidad = 5f;
-    public Animator animacion;
-    private bool anim = true;
-    private int estado = 0;
-    private Vector2 positionInit;
-    private int vidas = 3;
+
+    private Rigidbody2D rgbd2d;
+    private Vector2 direccion = Vector2.down, positionInit;
+    [SerializeField] private float velocidad = 5f;
+    private Animator animacion;
+    private bool anim = true, movimiento = true;
+    private int estado = 0, vidas = 3;
     private Collider2D colider;
+    private ControladorJuego tiempo;
+    public TextMeshProUGUI txtVidas, txtPuntaje, txtVelocidad;
+    public int enemigosDerrotados = 0;
+
+
+
+    [Header("Portal")]
+    private bool cristal = false;
+    public GameObject portal;
+
 
     public KeyCode Up = KeyCode.W;
     public KeyCode Down = KeyCode.S;
@@ -20,16 +31,19 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ActualizaVidas();
+        txtVelocidad.SetText((velocidad - 4).ToString());
         positionInit = transform.position;
         rgbd2d = GetComponent<Rigidbody2D>();
         animacion = GetComponent<Animator>();
         colider = GetComponent<Collider2D>();
+        tiempo = FindObjectOfType<ControladorJuego>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (vidas == 0)
+        if (vidas == 0 || !movimiento)
         {
             return;
         }
@@ -118,8 +132,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.CompareTag("Explosion") && vidas > 0)
         {
-            animacion.SetBool("Death", anim);
-            Invoke(nameof(Death), 1.6f);
+            movimiento = false;
+            SetDeath();
+        }
+        if (collision.CompareTag("Cristal")) { 
+            cristal = true;
+            Destroy(collision.gameObject);
+            portal.SetActive(cristal);
         }
     }
 
@@ -128,23 +147,41 @@ public class PlayerController : MonoBehaviour
         
         if(collision.gameObject.tag == "Enemigo")
         {
-            Debug.Log("Colision con enemigo");
             colider.isTrigger = true;
-            animacion.SetBool("Death", anim);
-            Invoke(nameof(Death), 1.6f);
+            SetDeath();
         }
 
     }
 
-    public void Death()
+    public void SetDeath()
+    {
+        animacion.SetBool("Death", anim);
+        Invoke(nameof(Death), 1.6f);
+    }
+
+    private void Death()
     {
         gameObject.SetActive(false);
-        if(vidas > 0)
+        vidas--;
+        if (vidas > 0)
         {
             transform.position = positionInit;
-            gameObject.SetActive(true);
-            vidas--;
             colider.isTrigger = false;
+            tiempo.ActivarTemporizador();
+            gameObject.SetActive(true);
+            movimiento = true;
         }
+        ActualizaVidas();
+    }
+
+    private void ActualizaVidas()
+    {
+        txtVidas.SetText(vidas.ToString());
+    }
+
+    public void AddSpeed()
+    {
+        if (velocidad < 11) velocidad++;
+        txtVelocidad.SetText((velocidad-4).ToString());
     }
 }

@@ -17,8 +17,12 @@ public class ItemPickup : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             OnItemPickup(collision.gameObject);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        if (collision.CompareTag("Explosion"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnItemPickup(GameObject player)
@@ -29,10 +33,10 @@ public class ItemPickup : MonoBehaviour
                 player.GetComponent<BombController>().AddBomb();
                 break;
             case ItemType.Flame:
-                player.GetComponent<BombController>().explosionRadio++;
+                player.GetComponent<BombController>().AddFlame();
                 break;
             case ItemType.Speed:
-                player.GetComponent<PlayerController>().velocidad++;
+                player.GetComponent<PlayerController>().AddSpeed();
                 break;
         }
     }

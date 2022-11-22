@@ -8,18 +8,25 @@ public class Patrullar : MonoBehaviour
     public Transform[] puntos;
     private int aleatorio;
     private Animator anim;
+    private PlayerController pj;
+    public GameObject crystal;
+    private bool disparador = false;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         aleatorio = Random.Range(0, puntos.Length);
+        pj = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position == puntos[aleatorio].position) CambiarRuta();
+        if (transform.position == puntos[aleatorio].position) { 
+            CambiarRuta();
+        }
         transform.position = Vector2.MoveTowards(transform.position, puntos[aleatorio].position, velocidaMov * Time.deltaTime);
     }
 
@@ -28,18 +35,34 @@ public class Patrullar : MonoBehaviour
         if (collision.gameObject.tag != "Player") {
             CambiarRuta();
         }
+        else
+        {
+            //anim.SetBool("hit", true);
+        }
     }
 
     void CambiarRuta()
     {
         aleatorio = aleatorio > 0 ? 0 : 1;
+        anim.SetBool("up", aleatorio == 1 ? true : false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Explosion"))
+        if (collision.CompareTag("Explosion") && !disparador)
         {
-            Destroy(gameObject);
+            disparador = true;
+            pj.enemigosDerrotados++;
+            anim.SetTrigger("death");
+            Invoke(nameof(DropCrystal), 1);
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void DropCrystal()
+    {
+        if(pj.enemigosDerrotados == 3) {
+            Instantiate(crystal, transform.position, Quaternion.identity);
         }
     }
 }

@@ -1,15 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class BombController : MonoBehaviour
 {
     [Header("Bombas")]
-    public GameObject bombaPrefab;
-    public KeyCode bomba = KeyCode.Space;
+    public Bomb bombaPrefab;
+    public KeyCode bombaKey = KeyCode.Space;
     public float timeExplosion = 3f;
     public int cantidadBombas = 1;
     public int bombasRes;
+    private Vector2 position;
+    public TextMeshProUGUI txtBombas, txtFlama;
 
     [Header("Explosion")]
     public Explosion explosionPrefab;
@@ -25,6 +28,8 @@ public class BombController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        txtBombas.SetText(cantidadBombas.ToString());
+        txtFlama.SetText(explosionRadio.ToString());
         audio = GetComponent<AudioSource>();
         bombasRes = cantidadBombas;
     }
@@ -32,7 +37,7 @@ public class BombController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(bombasRes > 0 && Input.GetKeyDown(bomba))
+        if(bombasRes > 0 && Input.GetKeyDown(bombaKey))
         {
             StartCoroutine(ponerBomba());
         }
@@ -41,34 +46,33 @@ public class BombController : MonoBehaviour
     private IEnumerator ponerBomba()
     {
         float x, y;
-        Vector2 position = transform.position;
+        position = transform.position;
         x = position.x;
         y = position.y;
         position.x = Mathf.RoundToInt(position.x);
         position.y = Mathf.RoundToInt(position.y);
 
-
-        GameObject bomba = Instantiate(bombaPrefab, position, Quaternion.identity);
+        Bomb bomba = Instantiate(bombaPrefab, position, Quaternion.identity);
         bombasRes--;
 
         yield return new WaitForSeconds(timeExplosion);
+        if (bomba)
+        {
+            position = bomba.transform.position;
+            position.x = Mathf.Round(position.x);
+            position.y = Mathf.Round(position.y);
 
-        position = bomba.transform.position;
-        position.x = Mathf.Round(position.x);
-        position.y = Mathf.Round(position.y);
+            Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
+            audio.Play();
+            explosion.SetActiveRenderer("Start");
+            explosion.DestroyAfter(explosionDuration);
 
-        Explosion explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
-        audio.Play();
-        explosion.SetActiveRenderer("Start");
-        explosion.DestroyAfter(explosionDuration);
-
-        explode(position, Vector2.up, explosionRadio);
-        explode(position, Vector2.down, explosionRadio);
-        explode(position, Vector2.right, explosionRadio);
-        explode(position, Vector2.left, explosionRadio);
-
-
-        Destroy(bomba);
+            explode(position, Vector2.up, explosionRadio);
+            explode(position, Vector2.down, explosionRadio);
+            explode(position, Vector2.right, explosionRadio);
+            explode(position, Vector2.left, explosionRadio);
+            bomba.DestruirBomba();
+        }
         bombasRes++;
     }
 
@@ -80,7 +84,9 @@ public class BombController : MonoBehaviour
         }
     }
 
-    private void explode(Vector2 position, Vector2 direction, int length)
+
+
+    public void explode(Vector2 position, Vector2 direction, int length)
     {
         if(length <= 0)
         {
@@ -119,7 +125,14 @@ public class BombController : MonoBehaviour
         if(cantidadBombas < 6)
         {
             cantidadBombas++;
+            txtBombas.SetText(cantidadBombas.ToString());
             bombasRes++;
         }
+    }
+
+    public void AddFlame()
+    {
+        if (explosionRadio < 6) explosionRadio++;
+        txtFlama.SetText(explosionRadio.ToString());
     }
 }
