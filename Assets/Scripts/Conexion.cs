@@ -52,9 +52,7 @@ public class Conexion : MonoBehaviour
             if (rdr.Read())
             {
                 PlayerPrefs.SetString("Jugador", txtUsuario.text);
-                Debug.Log("Inicio de sesión exitoso");
-                //PlayerPrefs.SetInt("Sub-Res", 0);
-                //SceneManager.LoadScene("Menu");
+                SceneManager.LoadSceneAsync("Stage 1");
             }
 
             rdr.Close();
