@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Networking;
 
 using MySql.Data;
 using MySql.Data.MySqlClient;
@@ -14,10 +15,12 @@ public class Conexion : MonoBehaviour
     private string host = "198.23.57.166", database= "gabbau0_dblogingame", user= "gabbau0_dblogingame", password= "o11wXgEH1=", cadenacon;
     [SerializeField] GameObject aviso, avisoRegistro, avisoR;
     [SerializeField] TextMeshProUGUI txtAviso, txtAvisoR;
+    private bool usuarioRegistrado = false;
 
     private MySqlConnection con = null;
     private MySqlCommand cmd = null;
     private MySqlDataReader rdr = null;
+    private string URL = "https://pruebas-gabriel-uthh.000webhostapp.com/UnityWebService/";
 
     // Start is called before the first frame update
     void Start()
@@ -25,43 +28,35 @@ public class Conexion : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Awake()
-    {
-        //PlayerPrefs.DeleteAll();
-        cadenacon = "Server=" + host + ";Database=" + database + ";User=" + user + ";Password=" + password;
-        try
-        {
-            con = new MySqlConnection(cadenacon);
-            con.Open();
-            Debug.Log("Estado de la conexión: " + con.State);
-        }
-        catch (Exception e)
-        {
-            txtAviso.SetText(e.ToString());
-            aviso.SetActive(true);
-            Debug.Log(e.Message);
-        }
-    }
-
     public void login()
     {
-        string consulta = "CALL spLogin('" + txtUsuario.text + "', '" + txtPassword.text + "')";
+        StartCoroutine(GetLogin());
+    }
 
-        Debug.Log(consulta);
-        try
+    private IEnumerator GetLogin()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("nom_user", txtUsuario.text);
+        form.AddField("nom_pass", txtPassword.text);
+
+        UnityWebRequest www = UnityWebRequest.Post(URL + "login.php", form);
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError)
         {
-            cmd = new MySqlCommand(consulta, con);
-            rdr = cmd.ExecuteReader();
-            Debug.Log(consulta);
-
-            if (rdr.Read())
+            aviso.SetActive(true);
+            txtAviso.SetText("Error al conectarse a la API");
+        }
+        else
+        {
+            if(www.downloadHandler.text != "0")
             {
-                int puntajepj = rdr.GetInt32(3);
-                ObtenerHS();
+                StartCoroutine(ObtenerHS());
+                string[] datos = www.downloadHandler.text.Split('-');
+                int puntajepj = Int32.Parse(datos[1].ToString());
                 PlayerPrefs.SetInt("HighScorePJ", puntajepj);
                 PlayerPrefs.SetInt("Score", 0);
-                PlayerPrefs.SetString("Jugador", txtUsuario.text);
+                PlayerPrefs.SetString("Jugador", datos[0].ToString());
                 PlayerPrefs.SetInt("Vidas", 3);
                 PlayerPrefs.SetInt("Flama", 1);
                 PlayerPrefs.SetInt("Bomba", 1);
@@ -71,119 +66,90 @@ public class Conexion : MonoBehaviour
             else
             {
                 aviso.SetActive(true);
-                gameObject.SetActive(false);
+                txtAviso.SetText("Datos incorrectos, reviselos e intente de nuevo");
             }
 
-            rdr.Close();
-        }
-        catch (Exception e)
-        {
-            txtAviso.SetText(e.Message);
-            aviso.SetActive(true);
-            gameObject.SetActive(false);
-            Debug.Log(e.Message);
         }
     }
 
     public void Registrar()
     {
-        string consulta = "CALL spRegistro('" + txtUsuarioR.text + "', '" + txtPasswordR.text + "')";
+        StartCoroutine(GetRegistrar());
+    }
 
-        Debug.Log(consulta);
-        try
+    private IEnumerator GetRegistrar()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("nom_user", txtUsuarioR.text);
+        form.AddField("nom_pass", txtPasswordR.text);
+
+        UnityWebRequest www = UnityWebRequest.Post(URL + "registrar.php", form);
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError)
         {
-            
-
-            if (Usuarios(txtUsuarioR.text))
+            aviso.SetActive(true);
+            txtAviso.SetText("Error al conectarse a la API");
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+            if (www.downloadHandler.text != "0")
             {
-                txtAvisoR.SetText("El usuario ya existe, intente con otro");
+                avisoRegistro.SetActive(true);
+            }
+            else
+            {
+                txtAvisoR.SetText("El usuario ya existe, o los datos ingresados son incorrectos");
                 avisoR.SetActive(true);
                 gameObject.SetActive(false);
             }
-            else
-            {
-                rdr.Close();
-                cmd = new MySqlCommand(consulta, con);
-                rdr = cmd.ExecuteReader();
-                Debug.Log(consulta);
-                avisoRegistro.SetActive(true);
-            }
 
-            rdr.Close();
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e.Message);
         }
     }
 
-    private bool Usuarios(string usuario)
-    {
-        string consulta = "CALL spUsuarios('" + usuario + "')";
+    public void Guardar() { StartCoroutine(GetGuardar()); }
 
-        Debug.Log(consulta);
-        try
-        {
-            cmd = new MySqlCommand(consulta, con);
-            rdr = cmd.ExecuteReader();
-            Debug.Log(consulta);
-
-            if (rdr.Read())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e.Message);
-            return false;
-        }
-    }
-
-    public void Guardar()
+    private IEnumerator GetGuardar()
     {
         int score = PlayerPrefs.GetInt("Score");
         string usuario = PlayerPrefs.GetString("Jugador");
-        string consulta = "CALL spAddPuntaje('" + score + "', '" + usuario + "')";
 
-        try
+        WWWForm form = new WWWForm();
+        form.AddField("nom_user", usuario);
+        form.AddField("score", score);
+
+        UnityWebRequest www = UnityWebRequest.Post(URL + "guardapuntaje.php", form);
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError)
         {
-            cmd = new MySqlCommand(consulta, con);
-            rdr = cmd.ExecuteReader();
-            ObtenerHS();
-
-            rdr.Close();
+            aviso.SetActive(true);
+            txtAviso.SetText("Error al conectarse a la API");
         }
-        catch (Exception e)
+        else
         {
-            Debug.Log(e.Message);
+            Debug.Log(www.downloadHandler.text);
         }
     }
 
-    private void ObtenerHS()
+    private IEnumerator ObtenerHS()
     {
-        string consulta = "CALL spGetHS()";
 
-        try
+        UnityWebRequest www = UnityWebRequest.Get(URL + "highscore.php");
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError)
         {
-            cmd = new MySqlCommand(consulta, con);
-            rdr = cmd.ExecuteReader();
-
-            if (rdr.Read())
-            {
-                PlayerPrefs.SetInt("HighScoreGame", (int)rdr.GetValue(0));
-                //SceneManager.LoadScene("Menu");
-            }
-
-            rdr.Close();
+            aviso.SetActive(true);
+            txtAviso.SetText("Error al conectarse a la API");
         }
-        catch (Exception e)
+        else
         {
-            Debug.Log(e.Message);
+            if (www.downloadHandler.text != "0")
+            {
+                PlayerPrefs.SetInt("HighScoreGame", Int32.Parse(www.downloadHandler.text));
+            }
         }
     }
 
