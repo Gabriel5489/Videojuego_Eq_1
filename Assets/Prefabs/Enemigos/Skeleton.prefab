@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3265386558339487745}
   m_Layer: 0
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,6 +155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeb22ed5cff07b4fbc95927c71a408d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidaMov: 0
+  velocidaMov: 1
   puntos: []
-  crystal: {fileID: 0}
+  crystal: {fileID: 463700136010000205, guid: 98f2c9ce32432a64cabec0857aa90e34, type: 3}

@@ -24,10 +24,14 @@ public class Patrullar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position == puntos[aleatorio].position) { 
-            CambiarRuta();
+        if (pj.GetMovimiento())
+        {
+            if (transform.position == puntos[aleatorio].position)
+            {
+                CambiarRuta();
+            }
+            transform.position = Vector2.MoveTowards(transform.position, puntos[aleatorio].position, velocidaMov * Time.deltaTime);
         }
-        transform.position = Vector2.MoveTowards(transform.position, puntos[aleatorio].position, velocidaMov * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -53,6 +57,7 @@ public class Patrullar : MonoBehaviour
         {
             disparador = true;
             pj.enemigosDerrotados++;
+            pj.ActualizaPuntaje();
             anim.SetTrigger("death");
             Invoke(nameof(DropCrystal), 1);
             gameObject.SetActive(false);

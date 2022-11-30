@@ -9,7 +9,7 @@ public class BombController : MonoBehaviour
     public Bomb bombaPrefab;
     public KeyCode bombaKey = KeyCode.Space;
     public float timeExplosion = 3f;
-    public int cantidadBombas = 1;
+    public int cantidadBombas;
     public int bombasRes;
     private Vector2 position;
     public TextMeshProUGUI txtBombas, txtFlama;
@@ -18,7 +18,7 @@ public class BombController : MonoBehaviour
     public Explosion explosionPrefab;
     public LayerMask explosionLayerMask;
     public float explosionDuration = 1f;
-    public int explosionRadio = 1;
+    public int explosionRadio;
     private AudioSource audio;
 
     [Header("Bloques")]
@@ -28,8 +28,7 @@ public class BombController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        txtBombas.SetText(cantidadBombas.ToString());
-        txtFlama.SetText(explosionRadio.ToString());
+        AsignarItems();
         audio = GetComponent<AudioSource>();
         bombasRes = cantidadBombas;
     }
@@ -53,6 +52,7 @@ public class BombController : MonoBehaviour
         position.y = Mathf.RoundToInt(position.y);
 
         Bomb bomba = Instantiate(bombaPrefab, position, Quaternion.identity);
+        bomba.tiempoRestante = timeExplosion;
         bombasRes--;
 
         yield return new WaitForSeconds(timeExplosion);
@@ -83,8 +83,6 @@ public class BombController : MonoBehaviour
             collision.isTrigger = false;
         }
     }
-
-
 
     public void explode(Vector2 position, Vector2 direction, int length)
     {
@@ -120,11 +118,20 @@ public class BombController : MonoBehaviour
         }
     }
 
+    private void AsignarItems()
+    {
+        cantidadBombas = PlayerPrefs.GetInt("Bomba");
+        explosionRadio = PlayerPrefs.GetInt("Flama");
+        txtBombas.SetText(cantidadBombas.ToString());
+        txtFlama.SetText(explosionRadio.ToString());
+    }
+
     public void AddBomb()
     {
         if(cantidadBombas < 6)
         {
             cantidadBombas++;
+            PlayerPrefs.SetInt("Bomba", cantidadBombas);
             txtBombas.SetText(cantidadBombas.ToString());
             bombasRes++;
         }
@@ -133,6 +140,7 @@ public class BombController : MonoBehaviour
     public void AddFlame()
     {
         if (explosionRadio < 6) explosionRadio++;
+        PlayerPrefs.SetInt("Flama", explosionRadio);
         txtFlama.SetText(explosionRadio.ToString());
     }
 }

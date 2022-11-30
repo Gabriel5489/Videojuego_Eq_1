@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Portal")]
     private bool cristal = false;
+
     public GameObject portal;
 
 
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        velocidad = PlayerPrefs.GetInt("Velocidad") + 4;
+        txtPuntaje.SetText(PlayerPrefs.GetInt("Score").ToString());
         ActualizaVidas();
         txtVelocidad.SetText((velocidad - 4).ToString());
         positionInit = transform.position;
@@ -43,32 +46,37 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (vidas == 0 || !movimiento)
+        
+        if (vidas > 0 && movimiento)
         {
-            return;
+            if (Input.GetKey(Up))
+            {
+                estado = 1;
+                setDireccion(Vector2.up);
+            }
+            else if (Input.GetKey(Down))
+            {
+                estado = 2;
+                setDireccion(Vector2.down);
+            }
+            else if (Input.GetKey(Left))
+            {
+                estado = 3;
+                setDireccion(Vector2.left);
+            }
+            else if (Input.GetKey(Right))
+            {
+                estado = 4;
+                setDireccion(Vector2.right);
+            }
+            else
+            {
+                disableAnimation();
+                estado = 0;
+                setDireccion(Vector2.zero);
+            }
+            enableAnimation();
         }
-
-        if (Input.GetKey(Up)){
-            estado = 1;
-            setDireccion(Vector2.up);
-        }else if (Input.GetKey(Down)){
-            estado = 2;
-            setDireccion(Vector2.down);
-        }else if (Input.GetKey(Left)){
-            estado = 3;
-            setDireccion(Vector2.left);
-        }
-        else if (Input.GetKey(Right))
-        {
-            estado = 4;
-            setDireccion(Vector2.right);
-        }
-        else{
-            disableAnimation();
-            estado = 0;
-            setDireccion(Vector2.zero);
-        }
-        enableAnimation();
     }
 
     private void FixedUpdate()
@@ -133,12 +141,13 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Explosion") && vidas > 0)
         {
             movimiento = false;
+            
             SetDeath();
         }
         if (collision.CompareTag("Cristal")) { 
             cristal = true;
             Destroy(collision.gameObject);
-            portal.SetActive(cristal);
+            portal.SetActive(true);
         }
     }
 
@@ -163,6 +172,7 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.SetActive(false);
         vidas--;
+        PlayerPrefs.SetInt("Vidas", vidas);
         if (vidas > 0)
         {
             transform.position = positionInit;
@@ -176,12 +186,23 @@ public class PlayerController : MonoBehaviour
 
     private void ActualizaVidas()
     {
-        txtVidas.SetText(vidas.ToString());
+        txtVidas.SetText(PlayerPrefs.GetInt("Vidas").ToString());
+    }
+
+    public void ActualizaPuntaje()
+    {
+        int puntaje = PlayerPrefs.GetInt("Score") + 1000;
+        PlayerPrefs.SetInt("Score", puntaje);
+        txtPuntaje.SetText(PlayerPrefs.GetInt("Score").ToString());
     }
 
     public void AddSpeed()
     {
         if (velocidad < 11) velocidad++;
-        txtVelocidad.SetText((velocidad-4).ToString());
+        PlayerPrefs.SetInt("Velocidad", (int)(velocidad - 4));
+        txtVelocidad.SetText(PlayerPrefs.GetInt("Velocidad").ToString());
     }
+
+    public void setMovimiento(bool pausa) { movimiento = pausa; }
+    public bool GetMovimiento() { return movimiento; }
 }

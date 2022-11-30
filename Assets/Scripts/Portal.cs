@@ -21,6 +21,12 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) SceneManager.LoadScene(escena+1);
+        if (collision.CompareTag("Player") && SceneManager.GetActiveScene().name != "Stage 3")
+        {
+            SceneManager.LoadScene(escena + 1);
+        }
+        else { 
+            SceneManager.LoadScene("Menu");
+        }
     }
 }

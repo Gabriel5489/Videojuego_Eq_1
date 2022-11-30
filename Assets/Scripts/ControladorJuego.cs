@@ -12,11 +12,13 @@ public class ControladorJuego : MonoBehaviour
     private bool tiempoActivado;
     private PlayerController pj;
     public TextMeshProUGUI txtTiempo;
+    [SerializeField] TextMeshProUGUI txtHigh;
 
     // Start is called before the first frame update
     void Start()
     {
         pj = FindObjectOfType<PlayerController>();
+        txtHigh.SetText(PlayerPrefs.GetInt("HighScoreGame").ToString());
         ActivarTemporizador();
     }
 
@@ -48,7 +50,7 @@ public class ControladorJuego : MonoBehaviour
         txtTiempo.SetText(cadena);
     }
 
-    private void CambiarTemporizador(bool estado)
+    public void CambiarTemporizador(bool estado)
     {
         tiempoActivado = estado;
     }
