@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6400956073266863507}
   - component: {fileID: -6838974878395316568}
   - component: {fileID: 5163786611543108273}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eagle
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
@@ -138,7 +138,9 @@ MonoBehaviour:
   puntos:
   - {fileID: 0}
   - {fileID: 0}
+  pj: {fileID: 7062087540999540227, guid: a05635ffb4631ef4aa69a001755f0f61, type: 3}
   crystal: {fileID: 2092476548856483179, guid: 0714f53680aa9344b9db800c4f79d088, type: 3}
+  movimientoEnemigo: 1
 --- !u!50 &5163786611543108273
 Rigidbody2D:
   serializedVersion: 4

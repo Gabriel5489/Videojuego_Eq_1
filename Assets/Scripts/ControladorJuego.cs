@@ -6,13 +6,13 @@ using TMPro;
 
 public class ControladorJuego : MonoBehaviour
 {
-    [SerializeField] private float tiempoMaximo;
+    public float tiempoMaximo;
 
     private float tiempoActual;
     private bool tiempoActivado;
     private PlayerController pj;
     public TextMeshProUGUI txtTiempo;
-    [SerializeField] TextMeshProUGUI txtHigh;
+    public TextMeshProUGUI txtHigh;
 
     // Start is called before the first frame update
     void Start()

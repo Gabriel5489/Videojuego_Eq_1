@@ -8,7 +8,7 @@ public class BombController : MonoBehaviour
     [Header("Bombas")]
     public Bomb bombaPrefab;
     public KeyCode bombaKey = KeyCode.Space;
-    public float timeExplosion = 3f;
+    public float timeExplosion = 2.5f;
     public int cantidadBombas;
     public int bombasRes;
     private Vector2 position;
@@ -24,6 +24,8 @@ public class BombController : MonoBehaviour
     [Header("Bloques")]
     public Tilemap destructibleTiles;
     public Bloques bloquePrefab;
+
+    public GameObject jugador;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,7 @@ public class BombController : MonoBehaviour
     private IEnumerator ponerBomba()
     {
         float x, y;
-        position = transform.position;
+        position = jugador.transform.position;
         x = position.x;
         y = position.y;
         position.x = Mathf.RoundToInt(position.x);
@@ -76,13 +78,7 @@ public class BombController : MonoBehaviour
         bombasRes++;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Bomb"))
-        {
-            collision.isTrigger = false;
-        }
-    }
+    
 
     public void explode(Vector2 position, Vector2 direction, int length)
     {
@@ -124,11 +120,14 @@ public class BombController : MonoBehaviour
         explosionRadio = PlayerPrefs.GetInt("Flama");
         txtBombas.SetText(cantidadBombas.ToString());
         txtFlama.SetText(explosionRadio.ToString());
+        Debug.Log("bombas = " + cantidadBombas);
+        Debug.Log("flama = " + explosionRadio);
     }
 
     public void AddBomb()
     {
-        if(cantidadBombas < 6)
+        
+        if(cantidadBombas < 5)
         {
             cantidadBombas++;
             PlayerPrefs.SetInt("Bomba", cantidadBombas);
@@ -139,7 +138,10 @@ public class BombController : MonoBehaviour
 
     public void AddFlame()
     {
-        if (explosionRadio < 6) explosionRadio++;
+        if (explosionRadio < 5)
+        {
+            explosionRadio++;
+        }
         PlayerPrefs.SetInt("Flama", explosionRadio);
         txtFlama.SetText(explosionRadio.ToString());
     }

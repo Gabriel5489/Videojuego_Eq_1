@@ -157,4 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidaMov: 1
   puntos: []
+  pj: {fileID: 7062087540999540227, guid: a05635ffb4631ef4aa69a001755f0f61, type: 3}
   crystal: {fileID: 5344976319414087325, guid: 017939f8279caa749b06f54bc9fb578e, type: 3}
+  movimientoEnemigo: 1

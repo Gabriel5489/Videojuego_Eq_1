@@ -8,9 +8,10 @@ public class Patrullar : MonoBehaviour
     public Transform[] puntos;
     private int aleatorio;
     private Animator anim;
-    private PlayerController pj;
+    public PlayerController pj;
     public GameObject crystal;
     private bool disparador = false;
+    public bool movimientoEnemigo = true;
     
 
     // Start is called before the first frame update
@@ -18,13 +19,12 @@ public class Patrullar : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         aleatorio = Random.Range(0, puntos.Length);
-        pj = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pj.GetMovimiento())
+        if (movimientoEnemigo)
         {
             if (transform.position == puntos[aleatorio].position)
             {

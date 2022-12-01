@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructionTime: 1
-  itemChance: 0.2
+  itemChance: 0.15
   Items:
   - {fileID: 1269713129651484255, guid: 4c1f80a65a7531744b669682d66991dd, type: 3}
   - {fileID: 5454842708733717269, guid: 77721c5b4313a804a86832aea17f2132, type: 3}

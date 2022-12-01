@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2642480655017034731}
   - component: {fileID: 2642480655017034732}
   - component: {fileID: -3265386558339487745}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Skeleton
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
@@ -157,4 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidaMov: 1
   puntos: []
+  pj: {fileID: 7062087540999540227, guid: a05635ffb4631ef4aa69a001755f0f61, type: 3}
   crystal: {fileID: 463700136010000205, guid: 98f2c9ce32432a64cabec0857aa90e34, type: 3}
+  movimientoEnemigo: 1

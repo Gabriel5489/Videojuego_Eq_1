@@ -8,16 +8,15 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rgbd2d;
     private Vector2 direccion = Vector2.down, positionInit;
-    [SerializeField] private float velocidad = 5f;
+    public float velocidad = 5f;
     private Animator animacion;
     private bool anim = true, movimiento = true;
     private int estado = 0, vidas = 3;
     private Collider2D colider;
     private ControladorJuego tiempo;
-    public TextMeshProUGUI txtVidas, txtPuntaje, txtVelocidad;
+    public TextMeshProUGUI txtVidas, txtPuntaje, txtVelocidad, txtPFinal;
     public int enemigosDerrotados = 0;
-
-
+    public GameObject PanelGameOver;
 
     [Header("Portal")]
     private bool cristal = false;
@@ -136,12 +135,21 @@ public class PlayerController : MonoBehaviour
         transform.localScale = escala;
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Bomb"))
+        {
+            collision.isTrigger = false;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Explosion") && vidas > 0)
         {
             movimiento = false;
-            
+            disableAnimation();
+            rgbd2d.constraints = RigidbodyConstraints2D.FreezePosition;
             SetDeath();
         }
         if (collision.CompareTag("Cristal")) { 
@@ -179,7 +187,16 @@ public class PlayerController : MonoBehaviour
             colider.isTrigger = false;
             tiempo.ActivarTemporizador();
             gameObject.SetActive(true);
+            rgbd2d.constraints = RigidbodyConstraints2D.None;
+            rgbd2d.freezeRotation = true;
             movimiento = true;
+        }
+        else
+        {
+
+            PanelGameOver.SetActive(true);
+            tiempo.CambiarTemporizador(false);
+            txtPFinal.SetText("Tu puntaje fue de: \n" + PlayerPrefs.GetInt("Score"));
         }
         ActualizaVidas();
     }
@@ -198,9 +215,19 @@ public class PlayerController : MonoBehaviour
 
     public void AddSpeed()
     {
-        if (velocidad < 11) velocidad++;
+        if (velocidad < 9) velocidad++;
         PlayerPrefs.SetInt("Velocidad", (int)(velocidad - 4));
         txtVelocidad.SetText(PlayerPrefs.GetInt("Velocidad").ToString());
+    }
+
+    public void AddBomb()
+    {
+        tiempo.GetComponent<BombController>().AddBomb();
+    }
+
+    public void AddFlame()
+    {
+        tiempo.GetComponent<BombController>().AddFlame();
     }
 
     public void setMovimiento(bool pausa) { movimiento = pausa; }

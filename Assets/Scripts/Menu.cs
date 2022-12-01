@@ -10,12 +10,14 @@ public class Menu : MonoBehaviour
     private bool pauseActivo = false;
     PlayerController player;
     ControladorJuego controladorJuego;
-    [SerializeField] Conexion conexion;
+    Patrullar enemigo;
+    public Conexion conexion;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        enemigo = FindObjectOfType<Patrullar>();
         controladorJuego = FindObjectOfType<ControladorJuego>();
     }
 
@@ -25,35 +27,13 @@ public class Menu : MonoBehaviour
         if (Input.GetKey(pause) && !pauseActivo) MenuPausaActivar();
     }
 
-    public void Botones(int opcion)
-    {
-        switch (opcion){
-            case 1:
-                SceneManager.LoadScene("Stage 1");
-                break;
-            case 2:
-                SceneManager.LoadScene("Niveles");
-                break;
-            case 3:
-                SceneManager.LoadScene("Acceso");
-                break;
-            case 4:
-                SceneManager.LoadScene("Menu");
-                break;
-
-        }
-    }
-
-    public void Niveles(int nivel)
-    {
-        SceneManager.LoadSceneAsync("Stage " + nivel);
-    }
 
     public void MenuPausaActivar()
     {
         pauseActivo = true;
         menupausa.SetActive(true);
         player.setMovimiento(!pauseActivo);
+        enemigo.movimientoEnemigo = false;
         controladorJuego.CambiarTemporizador(false);
     }
 
@@ -62,16 +42,16 @@ public class Menu : MonoBehaviour
         pauseActivo = false;
         menupausa.SetActive(false);
         player.setMovimiento(!pauseActivo);
+        enemigo.movimientoEnemigo = true;
         controladorJuego.CambiarTemporizador(true);
     }
 
     public void RegresarMenuPrincipal()
     {
         ResetearYGuardar();
-        SceneManager.LoadScene("Menu");
     }
 
-    private void ResetearYGuardar()
+    public void ResetearYGuardar()
     {
         PlayerPrefs.SetInt("Vidas", 3);
         PlayerPrefs.SetInt("Flama", 1);

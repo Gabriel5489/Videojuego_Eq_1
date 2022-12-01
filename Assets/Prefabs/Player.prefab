@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7062087540999540229}
   - component: {fileID: 7062087540999540226}
   - component: {fileID: 7062087540999540227}
-  - component: {fileID: 7062087540999540224}
   - component: {fileID: 7062087540999540225}
   - component: {fileID: 7062087540999540238}
   - component: {fileID: 7062087540999540239}
@@ -103,37 +102,15 @@ MonoBehaviour:
   velocidad: 5
   txtVidas: {fileID: 0}
   txtPuntaje: {fileID: 0}
+  txtVelocidad: {fileID: 0}
+  txtPFinal: {fileID: 0}
   enemigosDerrotados: 0
+  PanelGameOver: {fileID: 0}
   portal: {fileID: 6043359158019111110, guid: a45ed8604a5071d4290d855cc9eeb07c, type: 3}
   Up: 119
   Down: 115
   Left: 97
   Right: 100
---- !u!114 &7062087540999540224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7062087540999540236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e32d33f98acc5c49be48fdc31fdf71e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bombaPrefab: {fileID: 8028626088863716230, guid: 4800c0b4ab0e73d43819c9b812cb73fb, type: 3}
-  bombaKey: 32
-  timeExplosion: 2.5
-  cantidadBombas: 1
-  bombasRes: 0
-  explosionPrefab: {fileID: -1336976502116971958, guid: 568d70a73d0e2424185107b010b58c17, type: 3}
-  explosionLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  explosionDuration: 1
-  explosionRadio: 1
-  destructibleTiles: {fileID: 3978722829978614639, guid: b900d89bcc82cd0468ec015736764aee, type: 3}
-  bloquePrefab: {fileID: 7008393571571693781, guid: a0cd8055375da9c4aa63db78426705c3, type: 3}
 --- !u!95 &7062087540999540225
 Animator:
   serializedVersion: 3
